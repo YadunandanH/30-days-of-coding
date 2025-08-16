@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Extension Icons</title>
+</head>
+<body>
+    <h2>Productivity Hub Icons</h2>
+    <div id="icons"></div>
+    
+    <script>
+        function createIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Round corners
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, size * 0.15);
+            ctx.fill();
+            ctx.globalCompositeOperation = 'source-over';
+            
+            // Icon symbol (checkmark + timer)
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('✓', size * 0.3, size * 0.4);
+            ctx.fillText('⏰', size * 0.7, size * 0.7);
+            
+            return canvas;
+        }
+        
+        // Create all required icon sizes
+        [16, 48, 128].forEach(size => {
+            const canvas = createIcon(size);
+            const div = document.createElement('div');
+            div.innerHTML = `<h3>Icon ${size}x${size}</h3>`;
+            div.appendChild(canvas);
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.textContent = 'Download';
+            link.style.display = 'block';
+            div.appendChild(link);
+            
+            document.getElementById('icons').appendChild(div);
+        });
+    </script>
+</body>
+</html>

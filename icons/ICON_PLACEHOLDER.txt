@@ -1,0 +1,19 @@
+ICON PLACEHOLDER
+
+To use this extension, you need to create three icon files:
+- icon16.png (16x16 pixels)
+- icon48.png (48x48 pixels)  
+- icon128.png (128x128 pixels)
+
+QUICK SOLUTION:
+1. Open ../create_icons.html in your browser
+2. Download the generated icons
+3. Save them in this folder
+
+ALTERNATIVE:
+Create simple colored squares in any image editor:
+- Use colors: #667eea or #764ba2 (extension theme colors)
+- Add symbols like ✓ (checkmark) or ⏰ (clock) if desired
+- Save as PNG files with exact names above
+
+The extension will not load without these icon files!
