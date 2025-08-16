@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Hub</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Productivity Hub</h1>
+        </header>
+        
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="todos">Todos</button>
+            <button class="tab-button" data-tab="pomodoro">Pomodoro</button>
+            <button class="tab-button" data-tab="clipboard">Clipboard</button>
+        </nav>
+
+        <!-- Todos Tab -->
+        <div id="todos" class="tab-content active">
+            <div class="add-todo-section">
+                <input type="text" id="todoInput" placeholder="Add a new todo...">
+                <select id="prioritySelect">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <button id="addTodoBtn">Add</button>
+            </div>
+            
+            <div class="filter-section">
+                <select id="filterSelect">
+                    <option value="all">All Todos</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                    <option value="archived">Archived</option>
+                </select>
+                <button id="sortBtn">Sort by Priority</button>
+            </div>
+            
+            <div id="todosList" class="todos-list"></div>
+        </div>
+
+        <!-- Pomodoro Tab -->
+        <div id="pomodoro" class="tab-content">
+            <div class="pomodoro-section">
+                <div class="timer-display">
+                    <div id="timerDisplay">25:00</div>
+                    <div id="currentTask">No task selected</div>
+                </div>
+                
+                <div class="timer-controls">
+                    <button id="startTimer">Start</button>
+                    <button id="pauseTimer">Pause</button>
+                    <button id="resetTimer">Reset</button>
+                </div>
+                
+                <div class="timer-settings">
+                    <label>Work Duration (min): <input type="number" id="workDuration" value="25" min="1" max="60"></label>
+                    <label>Break Duration (min): <input type="number" id="breakDuration" value="5" min="1" max="30"></label>
+                </div>
+                
+                <div id="pomodoroTodos" class="pomodoro-todos"></div>
+            </div>
+        </div>
+
+        <!-- Clipboard Tab -->
+        <div id="clipboard" class="tab-content">
+            <div class="clipboard-section">
+                <div class="clipboard-header">
+                    <h3>Clipboard History</h3>
+                    <button id="clearClipboard">Clear All</button>
+                </div>
+                
+                <div class="search-section">
+                    <input type="text" id="clipboardSearch" placeholder="Search clipboard items...">
+                </div>
+                
+                <div id="clipboardList" class="clipboard-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
